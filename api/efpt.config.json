@@ -1,0 +1,133 @@
+﻿{
+   "CodeGenerationMode": 4,
+   "ContextClassName": "SchoolPortalContext",
+   "ContextNamespace": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "api",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 2,
+   "SelectedToBeGenerated": 0,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[dbo].[armsTable]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Attendance]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Authenticate]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[classesTable]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[countryTable]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ExamsTable]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[feesTable]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[GradesTable]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Lga]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PaymentTable]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ResultTable]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SchoolAdminRegistration]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[state]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[StudentclassTable]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[StudentRegTab]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[subjectTable]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Subjectteacher]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TeachersAttaindance]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TeacherTab]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TermTable]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Test_Type]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[testTable]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UploadTable]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": null,
+   "UncountableWords": null,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDateOnlyTimeOnly": true,
+   "UseDbContextSplitting": false,
+   "UseDecimalDataAnnotationForSprocResult": true,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UsePrefixNavigationNaming": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false
+}
