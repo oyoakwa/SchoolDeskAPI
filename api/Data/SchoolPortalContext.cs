@@ -483,6 +483,7 @@ public partial class SchoolPortalContext : DbContext
                 .HasDefaultValue("Null")
                 .UseCollation("Latin1_General_CI_AS");
             entity.Property(e => e.RegistrationDate).HasColumnType("datetimeoffset");
+            entity.Property(e => e.AdmissionDate).HasColumnType("datetimeoffset");
             entity.Property(e => e.ResidentialAddress)
                 .HasDefaultValue("No Address")
                 .UseCollation("Latin1_General_CI_AS");
@@ -507,7 +508,7 @@ public partial class SchoolPortalContext : DbContext
                 .HasDefaultValueSql("(NULL)")
                 .UseCollation("Latin1_General_CI_AS");
             entity.Property(e=>e.IsActive)
-                .HasDefaultValue("Null")
+                .HasDefaultValue(1)
                 .UseCollation("Latin1_General_CI_AS");
 
             entity.HasOne(d => d.School).WithMany(p => p.StudentRegTabs)

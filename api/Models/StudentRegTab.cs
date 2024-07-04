@@ -25,6 +25,7 @@ public partial class StudentRegTab
 
     public string ResidentialAddress { get; set; }
 
+    public DateTimeOffset AdmissionDate { get; set; }
     public DateTimeOffset RegistrationDate { get; set; }
 
     public string PresentClass { get; set; }
