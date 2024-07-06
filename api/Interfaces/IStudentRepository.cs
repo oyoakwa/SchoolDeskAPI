@@ -12,6 +12,7 @@ namespace api.Interfaces
         Task<StudentRegTab> CreateStudent(StudentForCreatDTO student);
         Task<IEnumerable<StudentSelectSPDTO>> GetAllStudentsAsync();
         Task<IEnumerable<StudentSelectSPDTO>> GetAllStudentFromSchool(string scholId);
+        Task<StudentForSelectDTO> GetStudentByStudentRollNumber(string rollNumber);
         Task DeleteStudent(StudentRegTab student);
     }
 }

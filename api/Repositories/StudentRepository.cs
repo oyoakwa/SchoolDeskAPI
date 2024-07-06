@@ -51,16 +51,28 @@ namespace api.Repositories
         public async Task<IEnumerable<StudentSelectSPDTO>> GetAllStudentFromSchool(string schoolId)
         {
             var schoolIdParam = new SqlParameter("@SchoolId", schoolId);
-            var stud = await _context.StudDTO.FromSqlRaw("EXEC SelStudsBySchoolId @SchoolId",schoolIdParam).ToListAsync();
-            if(stud is null){
+            var studs = await _context.StudDTO.FromSqlRaw("EXEC SelStudsBySchoolId @SchoolId",schoolIdParam).ToListAsync();
+            if(studs is null){
                 return new List<StudentSelectSPDTO>();
             }
-            return stud;
+            return studs;
         }
 
         public Task<IEnumerable<StudentSelectSPDTO>> GetAllStudentsAsync()
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<StudentForSelectDTO> GetStudentByStudentRollNumber(string rollNumber)
+        {
+            var StudentRollIdParam = new SqlParameter("@StudentRollNumber", rollNumber);
+            var stud = await _context.StudSelDTO.FromSqlRaw("EXEC GetStudentProfile @StudentRollNumber",StudentRollIdParam).ToListAsync();
+            if(stud is null){
+                return new StudentForSelectDTO();
+            }
+            var s = stud.FirstOrDefault();
+            s.AdmissionDate = new DateTimeOffset();
+            return stud.FirstOrDefault();
         }
     }
 }

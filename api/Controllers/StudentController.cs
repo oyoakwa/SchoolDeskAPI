@@ -32,5 +32,16 @@ namespace api.Controllers
 
         }
 
+        [HttpGet("/rollId/{studentId}")]
+        public async Task<IActionResult> GetStudentsByStudentId([FromRoute] string studentId)
+        {
+            var student = await _repo.GetStudentByStudentRollNumber(studentId);
+            if(student is null){
+                return NotFound();
+            }
+            return Ok(student);
+
+        }
+
     }
 }
