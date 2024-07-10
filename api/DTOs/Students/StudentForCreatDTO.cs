@@ -7,7 +7,6 @@ namespace api.DTOs.Students
 {
     public class StudentForCreatDTO
     {
-
     public Guid? UserId { get; set; }
     public string SchoolId { get; set; }
     public string StudentRollNumber { get; set; }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using api.Data;
+using api.DTOs.Students;
 using api.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,7 +30,6 @@ namespace api.Controllers
                 return NotFound();
             }
             return Ok(students);
-
         }
 
         [HttpGet("/rollId/{studentId}")]
@@ -40,7 +40,12 @@ namespace api.Controllers
                 return NotFound();
             }
             return Ok(student);
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> CreateStudent([FromBody] StudentForCreatDTO student){
+            var studs = await _repo.CreateStudent(student);
+            return CreatedAtAction(nameof(GetStudentsByStudentId), new{studentId = student.StudentRollNumber}, studs);
         }
 
     }

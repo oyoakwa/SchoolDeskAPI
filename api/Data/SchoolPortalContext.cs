@@ -484,7 +484,8 @@ public partial class SchoolPortalContext : DbContext
             entity.Property(e => e.ReasonForChange)
                 .HasDefaultValue("Null")
                 .UseCollation("Latin1_General_CI_AS");
-            entity.Property(e => e.RegistrationDate).HasColumnType("datetimeoffset");
+            entity.Property(e => e.RegistrationDate).HasColumnType("datetimeoffset").HasDefaultValue(DateTimeOffset.MinValue);
+            entity.Property(e => e.AdmissionDate).HasColumnType("datetimeoffset").HasDefaultValue(DateTimeOffset.MinValue);
             entity.Property(e => e.ResidentialAddress)
                 .HasDefaultValue("No Address")
                 .UseCollation("Latin1_General_CI_AS");
@@ -506,7 +507,7 @@ public partial class SchoolPortalContext : DbContext
                 .UseCollation("Latin1_General_CI_AS");
             entity.Property(e => e.StudentIdS).ValueGeneratedOnAdd();
             entity.Property(e => e.StudentPhoneNumber)
-                .HasDefaultValueSql("(NULL)")
+                .HasDefaultValueSql("(Null)")
                 .UseCollation("Latin1_General_CI_AS");
             entity.Property(e=>e.IsActive)
                 .HasDefaultValue(1)
