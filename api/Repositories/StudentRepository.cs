@@ -35,7 +35,8 @@ namespace api.Repositories
             var RegDateParam = new SqlParameter("@RegistrationDate", student.RegistrationDate);
             var parentTelNumParam = new SqlParameter("@GuidiancePhoneNo", student.GuidiancePhoneNo);
 
-            int rowsAffected = await _context.Database.ExecuteSqlRawAsync("EXEC RegisterNewStudent @SchoolId,@UserId,@FirstName,@MiddleName,@LastName,@PresentClass,@ResidentialAddress,@GuidianceName,@StudentRollNumber,@Sex,@RegistrationDate,@GuidiancePhoneNo");
+            int rowsAffected = await _context.Database.ExecuteSqlRawAsync("EXEC RegisterNewStudent @SchoolId,@UserId,@FirstName,@MiddleName,@LastName,@PresentClass,@ResidentialAddress,@GuidianceName,@StudentRollNumber,@Sex,@RegistrationDate,@GuidiancePhoneNo",
+            scholIdParam,userIdParam,firstNameParam,middleNameParam,lastNameParam,presentClassParam,residentialAddressParam,parentsNameParam,studRollNumParam,sexParam,RegDateParam,parentTelNumParam);
 
             if(rowsAffected<1){
                 throw new Exception("Error while creating resources. SP RegisterNewStudent");
@@ -71,7 +72,7 @@ namespace api.Repositories
                 return new StudentForSelectDTO();
             }
             var s = stud.FirstOrDefault();
-            s.AdmissionDate = new DateTimeOffset();
+            s.AdmissionDate = new DateTimeOffset(); // Change this to reflect real dates.
             return stud.FirstOrDefault();
         }
     }

@@ -45,7 +45,6 @@ namespace api.Controllers
         public async Task<ActionResult<SchoolDTO>> CreateSchool([FromBody] SchoolForCreationDTO schoolDTO)
         {
             var school = await _schRepo.CreateAsync(schoolDTO);
-            
             return CreatedAtAction(nameof(GetBySchoolId), new {schoolId = school.SchoolId}, school.ToSchoolDTO() );
         }
 
