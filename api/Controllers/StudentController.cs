@@ -32,8 +32,8 @@ namespace api.Controllers
             return Ok(students);
         }
 
-        [HttpGet("/rollId/{studentId}")]
-        public async Task<IActionResult> GetStudentsByStudentId([FromRoute] string studentId)
+        [HttpGet("rollId/{studentId}")]
+        public async Task<ActionResult<StudentForSelectDTO>> GetStudentsByStudentId([FromRoute] string studentId)
         {
             var student = await _repo.GetStudentByStudentRollNumber(studentId);
             if(student is null){
