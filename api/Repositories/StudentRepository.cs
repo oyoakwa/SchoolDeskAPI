@@ -20,7 +20,7 @@ namespace api.Repositories
         {
             var student = studForCreate.ToBaseModelFromCreationDTO();
             student.RegistrationDate = DateTimeOffset.UtcNow;
-            student.UserId = Guid.NewGuid();
+            student.UserId = Guid.NewGuid(); // Remember to remove this line when Guid is supplied by code
             
             var scholIdParam = new SqlParameter("@SchoolId",student.SchoolId);
             var userIdParam = new SqlParameter("@UserId", student.UserId);
