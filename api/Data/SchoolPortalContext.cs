@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using api.DTOs.Arms;
+using api.DTOs.Class;
 using api.DTOs.Country;
 using api.DTOs.LGA;
 using api.DTOs.Schools;
@@ -71,6 +72,7 @@ public partial class SchoolPortalContext : DbContext
     public DbSet<CountryDTO> Nations {get; set;}
 
     public DbSet<StateDTO> StateDTO {get; set;}
+    public DbSet<ClassDTO> ClassDTO {get; set;}
     public DbSet<LgaDTO> LGA { get; set; }
     public DbSet<StudentSelectSPDTO> StudDTO{get; set;}
     public DbSet<StudentForSelectDTO> StudSelDTO{get; set;}
@@ -79,6 +81,7 @@ public partial class SchoolPortalContext : DbContext
         modelBuilder.Entity<StudentForSelectDTO>().HasNoKey().ToView(null);
         modelBuilder.Entity<StudentSelectSPDTO>().HasNoKey().ToView(null);
         modelBuilder.Entity<LgaDTO>().HasNoKey().ToView(null);
+        modelBuilder.Entity<ClassDTO>().HasNoKey().ToView(null);
         modelBuilder.Entity<StateDTO>().HasNoKey().ToView(null);
         modelBuilder.Entity<CountryDTO>().HasNoKey().ToView(null);
         modelBuilder.Entity<ArmsDTO>().HasNoKey().ToView(null);
