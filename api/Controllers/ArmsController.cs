@@ -35,8 +35,19 @@ namespace api.Controllers
         public async Task<IActionResult> Create([FromBody] ArmsForCreationDTO armsDto)
         {
             var s = await _repo.CreateAsync(armsDto);
-            return Created();
+            return Ok(s);
         }
-        
+
+        [HttpDelete]
+        [Route("{armid}")]
+        public async Task<int> Delete([FromRoute] int armid ){
+            int arm = await _repo.DeleteAsync(armid);
+            if(arm < 1)
+            {
+                return 0;
+            }
+
+            return arm;
+        }
     }
 }

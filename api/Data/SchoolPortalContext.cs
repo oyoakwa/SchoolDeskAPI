@@ -471,7 +471,7 @@ public partial class SchoolPortalContext : DbContext
                 .HasDefaultValue("Null")
                 .UseCollation("Latin1_General_CI_AS")
                 .HasColumnName("isborder");
-            entity.Property(e => e.LastEditedOn).HasColumnType("datetime");
+            entity.Property(e => e.LastEditedOn).HasColumnType("datetimeoffset");
             entity.Property(e => e.LastName)
                 .IsRequired()
                 .UseCollation("Latin1_General_CI_AS");
@@ -513,7 +513,7 @@ public partial class SchoolPortalContext : DbContext
                 .HasDefaultValueSql("(Null)")
                 .UseCollation("Latin1_General_CI_AS");
             entity.Property(e=>e.IsActive)
-                .HasDefaultValue(1)
+                .HasDefaultValue(true)
                 .UseCollation("Latin1_General_CI_AS");
 
             entity.HasOne(d => d.School).WithMany(p => p.StudentRegTabs)

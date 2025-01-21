@@ -23,47 +23,47 @@ public partial class StudentRegTab
 
     public string Sex { get; set; }
 
-    public string ResidentialAddress { get; set; }
+    public string? ResidentialAddress { get; set; }
 
     public DateTimeOffset AdmissionDate { get; set; }
     public DateTimeOffset RegistrationDate { get; set; }
 
-    public string PresentClass { get; set; }
+    public string? PresentClass { get; set; }
 
-    public string GuidianceName { get; set; }
+    public string? GuidianceName { get; set; }
 
-    public string StudentPhoneNumber { get; set; }
+    public string? StudentPhoneNumber { get; set; }
 
-    public string EmailAdress { get; set; }
+    public string? EmailAdress { get; set; }
 
     public DateTime? DateOfBirth { get; set; }
 
     public int Lga { get; set; }
 
-    public string Disability { get; set; }
+    public string? Disability { get; set; }
 
     public byte[] Passport { get; set; }
 
-    public string GuidiancePhoneNo { get; set; }
+    public string? GuidiancePhoneNo { get; set; }
 
-    public string SchoolAttended { get; set; }
+    public string? SchoolAttended { get; set; }
 
-    public string ReasonForChange { get; set; }
+    public string? ReasonForChange { get; set; }
 
-    public string StudentEmail { get; set; }
+    public string? StudentEmail { get; set; }
 
-    public string Isborder { get; set; }
+    public string? Isborder { get; set; }
 
-    public DateTime? LastEditedOn { get; set; }
+    public DateTimeOffset? LastEditedOn { get; set; }
 
     public int? Armsid { get; set; }
 
-    public string SecreatPassWord { get; set; }
+    public string? SecreatPassWord { get; set; }
 
-    public string BloodGroup { get; set; }
+    public string? BloodGroup { get; set; }
 
-    public string Genotype { get; set; }
-    public bool IsActive { get; set; }
+    public string? Genotype { get; set; }
+    public bool? IsActive { get; set; }
 
     public virtual ICollection<ExamsTable> ExamsTables { get; set; } = new List<ExamsTable>();
 

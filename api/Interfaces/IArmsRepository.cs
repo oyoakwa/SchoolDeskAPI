@@ -11,6 +11,7 @@ namespace api.Interfaces
     {
         Task<List<ArmsDTO>> GetBySchoolIdAsync(string schoolId);
         Task<ArmsTable?> CreateAsync(ArmsForCreationDTO armsDTO);
+        Task<int> DeleteAsync(int armId);
         //Task
     }
 }

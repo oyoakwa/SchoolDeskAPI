@@ -71,9 +71,22 @@ namespace api.Repositories
             if(stud is null){
                 return new StudentForSelectDTO();
             }
-            var s = stud.FirstOrDefault();
-            s.AdmissionDate = new DateTimeOffset(); // Change this to reflect real dates.
             return stud.FirstOrDefault();
+        }
+
+        public async Task UpdateStudent(StudentRegTab student){
+              _context.StudentRegTabs.Update(student); // Mark the entity as modified
+        }
+
+        public async Task<int> SaveChangesAsync()
+        {
+            return await _context.SaveChangesAsync(); // Save changes to the database
+        }
+
+        public async Task<StudentRegTab> GetBaseStudentByStudentRollNumber(string rollNumber)
+        {
+            var b= await _context.StudentRegTabs.FirstOrDefaultAsync(a=>a.StudentRollNumber == rollNumber);
+            return b;
         }
     }
 }

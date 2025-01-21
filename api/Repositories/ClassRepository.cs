@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using api.Data;
 using api.DTOs.Class;
 using api.Interfaces;
+using api.Mappers;
+using api.Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,6 +27,30 @@ namespace api.Repositories
                 return null;
             }
             return clas;
+        }
+
+        public async Task<int> CreateClass(ClassForCreationDTO clas){
+            var klas = clas.ToBaseFromCreationDTO();
+            var schoolIdParam = new SqlParameter("@SchoolId",klas.SchoolId);
+            var classParam = new SqlParameter("@class",klas.Class);
+            var rowsAffected = await _context.Database.ExecuteSqlRawAsync("EXEC InsertClasses @class, @schoolId", classParam, schoolIdParam);
+            if(rowsAffected<1){
+                throw new Exception("Error while creating resources. Make sure class does not already exist");
+            }
+            return rowsAffected;
+        }
+
+        public async Task<int> DeleteAsync(int classId)
+        {
+            var clas= await _context.ClassesTables.FirstOrDefaultAsync(c=>c.ClassId == classId);
+            if(clas == null)
+            {
+                return 0;
+            }
+            _context.ClassesTables.Remove(clas);
+            await _context.SaveChangesAsync();
+
+            return clas.ClassId;
         }
     }
 }

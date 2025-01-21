@@ -2,11 +2,13 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace api.Models;
 
 public partial class ClassesTable
 {
+    [Key]
     public int ClassId { get; set; }
 
     public string SchoolId { get; set; }

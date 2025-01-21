@@ -13,6 +13,9 @@ namespace api.Interfaces
         Task<IEnumerable<StudentSelectSPDTO>> GetAllStudentsAsync();
         Task<IEnumerable<StudentSelectSPDTO>> GetAllStudentFromSchool(string scholId);
         Task<StudentForSelectDTO> GetStudentByStudentRollNumber(string rollNumber);
+        Task<StudentRegTab> GetBaseStudentByStudentRollNumber(string rollNumber);
         Task DeleteStudent(StudentRegTab student);
+        Task UpdateStudent(StudentRegTab student);
+        Task<int> SaveChangesAsync();
     }
 }

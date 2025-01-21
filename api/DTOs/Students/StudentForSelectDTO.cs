@@ -5,7 +5,7 @@ namespace api.DTOs.Students
     public string SchoolId { get; set; }
     public string StudentRollNumber { get; set; }
     public string ResidentialAddress { get; set; }
-    public string? LGA { get; set; }
+    public string LGA { get; set; }
     public string FullName { get; set; }
     public string GuidiancePhoneNo { get; set; }
     public DateTimeOffset? AdmissionDate { get; set; } = default(DateTimeOffset);

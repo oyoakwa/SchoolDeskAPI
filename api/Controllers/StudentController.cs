@@ -1,11 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using api.Data;
 using api.DTOs.Students;
 using api.Interfaces;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 using Microsoft.AspNetCore.Mvc;
+using api.Mappers;
+using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.EntityFrameworkCore;
+using api.Models;
 
 namespace api.Controllers
 {
@@ -43,9 +44,34 @@ namespace api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateStudent([FromBody] StudentForCreatDTO student){
+        public async Task<ActionResult<StudentForSelectDTO>> CreateStudent([FromBody] StudentForCreatDTO student){
             var studs = await _repo.CreateStudent(student);
             return CreatedAtAction(nameof(GetStudentsByStudentId), new{studentId = student.StudentRollNumber}, studs);
+        }
+
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> PartialUpdateStudent(string id, [FromBody] JsonPatchDocument<StudentForUpdateDTO> patchObj){
+            if(patchObj is null){
+                return BadRequest();
+            }
+
+            var student = await _repo.GetBaseStudentByStudentRollNumber(id);
+            if(student is null){
+                return NotFound();
+            }
+            var studForUpdate = student.ToUpdateFromBaseObject();
+            patchObj.ApplyTo(studForUpdate,ModelState); 
+            if(!ModelState.IsValid){
+                return BadRequest(ModelState);
+            }
+            var studentBaseObj = studForUpdate.ToBaseFromUpdateObject(student);
+            studentBaseObj.StudentRollNumber = student.StudentRollNumber;
+            _context.StudentRegTabs.Add(studentBaseObj);
+            _context.Entry(studentBaseObj).State = EntityState.Modified;
+            _context.Entry(studentBaseObj).Property(s => s.StudentIdS).IsModified = false;
+            await _context.SaveChangesAsync();
+           
+            return Ok(studForUpdate);
         }
 
     }

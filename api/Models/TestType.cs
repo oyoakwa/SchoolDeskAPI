@@ -7,5 +7,6 @@ namespace api.Models;
 
 public partial class TestType
 {
+    public string SchoolID {get; set;}
     public string TesyType { get; set; }
 }

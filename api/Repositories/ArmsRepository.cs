@@ -32,6 +32,19 @@ namespace api.Repositories
             
             return arm;
         }
+ 
+        public async Task<int> DeleteAsync(int armId)
+        {
+            var arm = await _context.ArmsTables.FirstOrDefaultAsync(a=>a.ArmsId == armId);
+            if(arm is null){
+                throw new Exception("Object Not Found");
+            }
+            else{
+                _context.ArmsTables.Remove(arm);
+                await _context.SaveChangesAsync();
+            }
+            return arm.ArmsId;
+        }
 
         public async Task<List<ArmsDTO>> GetBySchoolIdAsync(string schoolId)
         {
@@ -39,5 +52,7 @@ namespace api.Repositories
             var arms =  await _context.Arms.FromSqlRaw("EXEC GetArns @SchoolId", schIdParam).ToListAsync();
             return arms;
         }
+
+        
     }
 }

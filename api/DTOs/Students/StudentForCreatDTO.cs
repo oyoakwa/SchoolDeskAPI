@@ -21,4 +21,17 @@ namespace api.DTOs.Students
     public DateTimeOffset RegistrationDate { get; set; }
         
     }
+
+    public class StudentForUpdateDTO
+    {
+    public string? FirstName { get; set; }
+    public string? MiddleName { get; set; }
+    public string? LastName { get; set; }
+    public string? Sex { get; set; }
+    public string? EmailAdress { get; set; }
+    public string? ResidentialAddress { get; set; } 
+    public string? GuidianceName { get; set; }
+    public string? GuidiancePhoneNo { get; set; }
+    public DateTimeOffset? LastEditedOn { get; set; }
+    }
 }
